@@ -1,4 +1,4 @@
-# Contents
+# C Programming Language
 
 ## Chapter 1: Basic Syntax, Variables and Data Types
 - [1.1 History of Programming and Computer](#11-history-of-programming-and-computer)
@@ -6,10 +6,9 @@
 - [1.3 First C Program](#13-first-c-program)
 - [1.4 Comments](#14-comments)
 - [1.5 Variables and Data Types](#15-variables-and-data-types)
-- [1.6 Data Types Limitations in C](#16-data-types-limitations-in-c)
-- [1.7 How to Take Input in C](#17-how-to-take-input-in-c)
-- [1.8 Pre and Post Increment](#18-pre-and-post-increment)
-- [1.9 Operator Precedence in C](#19-operator-precedence-in-c)
+- [1.6 How to Take Input in C](#16-how-to-take-input-in-c)
+- [1.7 Pre and Post Increment](#17-pre-and-post-increment)
+- [1.8 Operator Precedence in C](#18-operator-precedence-in-c)
 
 ## Chapter 2: Operators, Conditional Statements (if-else)
 - [2.1 Arithmetic Operators: +, -, *, /, %](#21-arithmetic-operators----)
@@ -81,18 +80,265 @@
 
 ---
 
-# 📌 Test Section Below (for clickable bookmarks)
+# Chapter 1: Basic Syntax, Variables and Data Types
 
 ## 1.1 History of Programming and Computer
-This section covers the early development of computing and programming logic.
+* **1837** = Charles Babbage conceptualized and designed the Analytical Engine, the first mechanical general-purpose computer. 
+* **1843** = Ada Lovelace wrote an algorithm for the Analytical Engine. Her algorithms introduced foundational programming concepts such as loops, conditional branching, and the idea of data storage, earning her recognition as the world's first computer programmer.
 
 ## 1.2 History of C Programming Language
-Dennis Ritchie created C at Bell Labs in the early 1970s.
+* **1958 (AlGOL)** = ALGOL (Algorithmic Language) was developed as a structured programming language, influencing the development of many modern languages, including C, particularly in concepts like block structure and nested functions.
+* **1966 (BCPL)** = BCPL (Basic Combined Programming Language) was developed for system-level programming. It influenced the creation of B, which was a direct precursor to C.
+* **1070 (B)** = B is a simpler version of BCPL. It was created at Bell Labs for early UNIX OS development but lacked essential data types and structures, which limited its ability to handle more complex software development.
+* **1972 (C)** = C was developed by Dennis Ritchie at Bell Labs to rewrite the UNIX operating system. Its design made it portable across different hardware platforms, and it became one of the most influential languages in software development.
 
 ## 1.3 First C Program
 ```c
 #include <stdio.h>
 int main() {
     printf("Hello, World!");
+
     return 0;
 }
+```
+After writing the program open vs code terminal and type: 
+
+![alt text](images/image.png)
+
+### Behind the code:
+
+1. **Directives**: Directives are special instructions for the preprocessor that start with a # symbol.
+
+    **Some common directives:**
+
+    * `#include` = Includes the contents of another file into the current file,     often used to include header files.
+    * `#define` = Define a macro.
+
+2. **Macros**: Macros are special types of directives that allow you to define constants or reusable code snippets that defined using the #define directives. 
+
+example: 
+```c
+#include <stdio.h>
+#define PI 3.1416
+
+int main()
+{
+    printf("Value of PI: %.4f", PI);
+
+    return 0;
+}
+```
+
+![alt text](images/image-1.png)
+
+3. **Preprocessor:** Preprocessor is a tool or step in the compilation process that handles directives and macros before the actual compilation begins.
+
+    Key features of the preprocessor: 
+    * It runs automatically before the compiler.
+    * It removes comments and expands macros.
+
+    What the Preprocessor Does:
+    - Reads the directives (Lines starting with `#`) in the source code.
+    - Modifies the code as per the directives and expands macros.
+    - Produces the preprocessed source code that is then passed to the compiler.
+
+4. **Header File:**
+   A header file in C is a file with a `.h` extension that contains reusable code, such as function declarations, constants, variables, and data types. You can include it in your program using the `#include` directive.
+
+   Some Common Header Files in C:
+   - `stdio.h` – Standard Input/Output functions
+   - `stdlib.h` – Memory allocation, process control, conversions
+   - `math.h` – Mathematical functions
+   - `string.h` – String handling functions
+   - `stdbool.h` – Boolean data type (true, false, bool)
+
+5. **main function():**
+   The `main()` function is the entry point of every C program. You must include the `main()` function once in your code for the program to work. No matter where you write the `main()` function, when the C program runs, it finds the `main()` function first and starts executing from there.
+
+6. **printf() Function:**
+   The `printf()` function is a predefined function. If you want to use this function, you have to include our standard input and output header or library file (`stdio.h`).
+
+## 1.4 Comments:
+![alt text](images/image-2.png)
+```c
+#include <stdio.h>
+
+int main()
+{
+    // This is a single line comment
+    /*
+        This is a
+        Multiline
+        Comment
+    */
+
+    return 0;
+}
+```
+
+## 1.5 Variables and Data Types:
+
+### Data Types: 
+1. **int**: - 4, -3, -2, -1 ,0 ,1 ,2 ,3 ,4 --- `%d` (Format Specifier)
+2. **long long int**: - 4, -3, -2, -1 ,0 ,1 ,2 ,3 ,4 --- `%lld`
+3. **float**: -4.53, -3.45, 1.5, 3.1416 --- `%f`
+4. **double**: -4.53, -3.45, 1.5, 3.1416 --- `%lf` 
+5. **char**: ‘1’, ‘5’, ‘A’, ‘@’, --- `%c`
+6. **bool**: true(1) or false(0)
+
+### Data Types Limitations in C:
+
+- **Int** = 10^9 = it allows up to approximately 10 digits
+- **long long int** = 10^18 = it allows up to approximately 19 digits
+- **float** = 10^6 = it allows up to approximately 7 digits precision (1.123456 = 7 digits)
+- **double** = 10^14 = it allows up to approximately 15 digits precision
+- **char** = -128 to 127
+
+### Variable: Who store Data Types.
+
+### Variable Declaration:
+
+```c 
+int a; 
+```
+### Variable initialization:
+```c
+int a = 30;
+```
+### Variable assignment:
+```c
+a = 40;
+```
+**Note**: initialization gives a variable its first value, while assignment gives a variable a new value after it has been initialized.
+
+**Example:**
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+int main()
+{
+    int myInt = 2147483647;
+    long long int myLongLongInt = 9223372036854775807;
+    float myFloat = 1.123456;
+    double myDouble = 1.12345678912345;
+    char myChar = 'a';
+    bool myBool = true;
+
+    printf("myInt: %d\n", myInt);
+    printf("myLongLongInt: %lld\n", myLongLongInt);
+    printf("myFloat: %f\n", myFloat);
+    printf("myFloat: %.2f\n", myFloat);
+    printf("myDouble: %.15lf\n", myDouble);
+    printf("myChar: %c\n", myChar);
+    printf("myBool: %d\n", myBool);
+
+    return 0;
+}
+```
+![alt text](images/image-3.png)
+
+## 1.6 How to take input in c
+```c
+#include <stdio.h>
+int main()
+{
+    int myInt;
+    float myFloat;
+    char myChar;
+
+    scanf("%d", &myInt); // & = address of operator or ampersand operator
+    scanf("%f", &myFloat);
+    scanf(" %c", &myChar); //The space before %c to consume any leftover newline character
+
+    printf("Integer: %d\n", myInt);
+    printf("Float: %f\n", myFloat);
+    printf("Float: %.2f\n", myFloat);
+    printf("Character: %c\n", myChar);
+
+    return 0;
+}
+```
+![alt text](images/image-4.png)
+
+### Some common input and output function:
+
+1. `scanf()` -- `printf()`
+
+2. `getchar()` -- `putchar()` = `getchar()` reads a single character, and `putchar()` prints a single character.
+
+**Code:** 
+```c
+#include <stdio.h>
+int main()
+{
+    char myChar;
+    myChar = getchar();
+    putchar(myChar); // Output the character read from input
+
+    return 0;
+}
+```
+![alt text](images/image-5.png)
+
+**Note:** <br>
+We cannot directly call the getchar() function. Instead, we must assign the getchar() function to a variable. 
+We are not allowed to add any additional text inside the putchar() function and The putchar() function must strictly be used to print a single character.
+
+## 1.7 pre and post increment:
+```c
+#include <stdio.h>
+int main()
+{
+    int i = 10;
+    int x = ++i;
+    // ------------->
+
+    printf("x = %d\n", x);
+    printf("i = %d", i);
+
+    return 0;
+}
+```
+![alt text](images/image-6.png)
+
+**Note:** <br> 
+Here, i is incremented to 11 first, and then this new value is assigned to x. Both i and x are 11 after this operation.
+
+**Post Increment**
+```c
+#include <stdio.h>
+int main()
+{
+    int i = 10;
+    int x = i++;
+    // ------------->
+
+    printf("x = %d\n", x);
+    printf("i = %d", i);
+
+    return 0;
+}
+```
+![alt text](images/image-7.png)
+
+**Note:** <br> 
+First, the value of `i` (which is 10) is assigned to the variable `x`. After that, `i` is incremented, so `i` becomes 11.
+
+**Note:**
+- **Pre-increment (`++i`)**: First increments the value of `i`, then assigns it.
+- **Post-increment (`i++`)**: First assigns the value, then increments `i`.
+
+## 1.8 Operator Precedence In C:
+![alt text](images/image-8.png)
+
+So, if you write an expression like:  
+`int result = 10 + 5 - 2 / 2 * 3;`  
+
+Step-by-step evaluation:  
+10 + 5 – 1 * 3  
+10 + 5 – 3  
+15 – 3  
+12  
+
+Final result = 12
